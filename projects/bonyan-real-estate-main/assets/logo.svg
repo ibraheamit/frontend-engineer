@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+    <!-- Building Icon -->
+    <path d="M20 40V15L35 5L50 15V40H20Z" fill="#3498db"/>
+    <path d="M30 40V20L35 17L40 20V40H30Z" fill="#2c3e50"/>
+    
+    <!-- Text "بنيان" -->
+    <text x="60" y="35" font-family="Cairo, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">
+        بنيان
+    </text>
+    
+    <!-- Tagline -->
+    <text x="60" y="45" font-family="Cairo, sans-serif" font-size="10" fill="#7f8c8d">
+        منصتك للبيع على الخارطة
+    </text>
+</svg> 

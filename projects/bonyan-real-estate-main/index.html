@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنيان - منصتك للبيع على الخارطة</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation Bar - Desktop Only -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top d-none d-lg-block">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">
+                <img src="assets/logo.png" alt="بنيان" height="40">
+            </a>
+            <div class="navbar-nav-wrapper">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hero">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits">المميزات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#statistics">الإحصائيات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">الشهادات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">الأسئلة الشائعة</a>
+                    </li>
+                </ul>
+                <a href="#register" class="btn btn-primary">سجل الآن</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>اكتشف أفضل المشاريع العقارية على الخارطة</h1>
+                    <p>منصة بنيان توفر لك فرصة الاستثمار في أفضل المشاريع العقارية المطورة من قبل أشهر الشركات العقارية
+                        في المملكة العربية السعودية</p>
+                    <div class="hero-buttons">
+                        <a href="#register" class="btn btn-primary">سجل مشروعك</a>
+                        <!-- <a href="#projects" class="btn btn-outline-light">تصفح المشاريع</a> -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images.png" alt="مشاريع عقارية" class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن</h2>
+                <p>نحن نقدم منصة متكاملة للبيع على الخارطة مع ضمان الجودة والشفافية</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>خبرة واسعة</h4>
+                                    <p>نمتلك خبرة تزيد عن 10 سنوات في مجال العقارات</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>ضمان الجودة</h4>
+                                    <p>نضمن لك جودة المشاريع وشفافية المعاملات</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>شراكات موثوقة</h4>
+                                    <p>نعمل مع أفضل الشركات العقارية في المملكة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="assets/about.svg" alt="من نحن" class="img-fluid">
+                        <div class="experience-badge">
+                            <span class="number">10+</span>
+                            <span class="text">سنوات خبرة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section section" id="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>مميزات المنصة</h2>
+                <p>نقدم لك مجموعة من المميزات التي تجعل تجربتك معنا فريدة ومميزة</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>ضمان الجودة</h3>
+                        <p>نضمن لك جودة المشاريع وشفافية المعاملات مع أفضل الشركات العقارية</p>
+                        <ul class="benefit-features">
+                            <li><i class="fas fa-check"></i> مشاريع موثوقة</li>
+                            <li><i class="fas fa-check"></i> شفافية كاملة</li>
+                            <li><i class="fas fa-check"></i> ضمان الجودة</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>استثمار آمن</h3>
+                        <p>فرص استثمارية مربحة مع ضمان عوائد جيدة على المدى الطويل</p>
+                        <ul class="benefit-features">
+                            <li><i class="fas fa-check"></i> عوائد مجزية</li>
+                            <li><i class="fas fa-check"></i> مخاطر منخفضة</li>
+                            <li><i class="fas fa-check"></i> توقعات إيجابية</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>دعم مستمر</h3>
+                        <p>فريق متخصص لمساعدتك في كل خطوة من خطوات الاستثمار</p>
+                        <ul class="benefit-features">
+                            <li><i class="fas fa-check"></i> استشارات مجانية</li>
+                            <li><i class="fas fa-check"></i> متابعة مستمرة</li>
+                            <li><i class="fas fa-check"></i> دعم فني</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics" id="statistics">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="150">0</div>
+                        <div class="stat-label">مشروع عقاري</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">مطور عقاري</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="1000">0</div>
+                        <div class="stat-label">عملية بيع</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="98">0</div>
+                        <div class="stat-label">تقييم إيجابي</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء عملائنا</h2>
+                <p>نفخر بثقة عملائنا وشركائنا في منصتنا</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <p class="testimonial-text">منصة مميزة ساعدتني في الوصول إلى عملاء جدد وزيادة مبيعاتي بشكل
+                                كبير. الخدمة احترافية والمنصة سهلة الاستخدام.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/testimonial-1.svg" alt="أحمد محمد" class="author-image">
+                            <div class="author-info">
+                                <h4>أحمد محمد</h4>
+                                <p>مطور عقاري</p>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <p class="testimonial-text">تجربة رائعة مع منصة بنيان. ساعدتني في العثور على أفضل الفرص
+                                الاستثمارية في السوق العقاري.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/testimonial-2.svg" alt="سارة أحمد" class="author-image">
+                            <div class="author-info">
+                                <h4>سارة أحمد</h4>
+                                <p>مستثمرة</p>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <p class="testimonial-text">منصة موثوقة وشفافة. ساعدتني في اتخاذ قرارات استثمارية مدروسة مع
+                                ضمان الجودة والأمان.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="assets/testimonial-3.svg" alt="خالد عبدالله" class="author-image">
+                            <div class="author-info">
+                                <h4>خالد عبدالله</h4>
+                                <p>مستثمر</p>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            كيف يمكنني التسجيل في المنصة؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            يمكنك التسجيل بسهولة من خلال النقر على زر "سجل الآن" وملء النموذج المطلوب.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ما هي تكلفة استخدام المنصة؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            نقدم خطط اشتراك متنوعة تناسب احتياجاتك. تواصل معنا لمعرفة التفاصيل.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            كيف يتم ضمان حقوق المطور والمشتري؟
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            نستخدم عقوداً موثوقة وشفافة تضمن حقوق جميع الأطراف.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration" id="register">
+        <div class="container">
+            <div class="section-title">
+                <h2>سجل الآن</h2>
+                <p>انضم إلى مجتمع المطورين وابدأ رحلتك مع بنيان</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="developerRegistrationForm"
+                        action="https://script.google.com/macros/s/AKfycbyOqGMZ9hPbfMZcco7Y30edLyzT1sGK_8ILf440T1v_VAKq1d-QUcgyOyn_4Ox03y9j/exec"
+                        method="post" class="registration-form">
+                        <div class="form-group">
+                            <label for="developerName">اسم المطور/الشركة</label>
+                            <input type="text" class="form-control" id="developerName" name="اسم المطور" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email" name="بريد إلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" name="رقم الهاتف" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">اسم الشركة (اختياري)</label>
+                            <input type="text" class="form-control" id="company" name="اسم الشركة">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">رسالة إضافية (اختياري)</label>
+                            <textarea class="form-control" id="message" name="رسالة" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">سجل الآن</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation for Mobile -->
+    <nav class="bottom-nav d-lg-none">
+        <div class="bottom-nav-container">
+            <a href="#hero" class="bottom-nav-item active">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#about" class="bottom-nav-item">
+                <i class="fas fa-info-circle"></i>
+                <span>من نحن</span>
+            </a>
+            <a href="#benefits" class="bottom-nav-item">
+                <i class="fas fa-star"></i>
+                <span>المميزات</span>
+            </a>
+            <a href="#testimonials" class="bottom-nav-item">
+                <i class="fas fa-comments"></i>
+                <span>الآراء</span>
+            </a>
+            <a href="#register" class="bottom-nav-item">
+                <i class="fas fa-user-plus"></i>
+                <span>التسجيل</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <img src="assets/logo.svg" alt="بنيان" height="50" class="mb-3">
+                        <p class="footer-description">
+                            منصتك الأولى للبيع على الخارطة، نوفر حلولاً مبتكرة وخدمات متميزة للمطورين العقاريين
+                            والمشترين.
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="footer-title">روابط سريعة</h5>
+                    <ul class="footer-links">
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#benefits">المميزات</a></li>
+                        <li><a href="#statistics">الإحصائيات</a></li>
+                        <li><a href="#testimonials">الشهادات</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="footer-title">تواصل معنا</h5>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+966 11 123 4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@bunyan.sa</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="footer-title">النشرة البريدية</h5>
+                    <p class="newsletter-text">اشترك في نشرتنا البريدية للحصول على آخر المستجدات</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                            <button type="submit" class="btn btn-primary">اشترك</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="copyright">© 2024 بنيان. جميع الحقوق محفوظة</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="footer-bottom-links">
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة ملفات تعريف الارتباط</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
