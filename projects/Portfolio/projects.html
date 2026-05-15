@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Henry Clark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ── RESET & TOKENS ─────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #111114;
+            --bg2: #1a1a1e;
+            --card: #1e1e22;
+            --card2: #232328;
+            --accent: #2ec4f3;
+            --text: #fff;
+            --muted: #8888a0;
+            --border: #2a2a32;
+            --radius: 14px;
+            --px: clamp(16px, 4.5vw, 80px);
+            --max: 1280px;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 2px
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        img {
+            display: block;
+            max-width: 100%
+        }
+
+        /* ── WRAP ─────────────────────────────── */
+        .wrap {
+            width: 100%;
+            max-width: var(--max);
+            margin-inline: auto;
+            padding-inline: var(--px)
+        }
+
+        /* ── NAV ──────────────────────────────── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 600;
+            background: rgba(17, 17, 20, .9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            width: 100%;
+            max-width: var(--max);
+            margin-inline: auto;
+            padding-inline: var(--px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 1rem
+        }
+
+        .nav-logo img {
+            width: 38px;
+            height: 38px
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--muted);
+            transition: color .2s;
+        }
+
+        .nav-back:hover {
+            color: var(--accent)
+        }
+
+        .nav-back svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        /* ── PAGE HEADER ──────────────────────── */
+        .page-header {
+            padding-block: clamp(40px, 6vw, 80px) clamp(32px, 4vw, 56px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header-tag {
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .page-header-tag::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            flex-shrink: 0
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 span {
+            color: var(--muted);
+            font-weight: 400
+        }
+
+        .page-header p {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 480px;
+            line-height: 1.7
+        }
+
+        /* ── FILTERS ──────────────────────────── */
+        .filters {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding-bottom: clamp(24px, 3vw, 40px);
+        }
+
+        .filter-btn {
+            padding: 7px 18px;
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .3px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all .22s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(46, 196, 243, .3);
+            color: var(--text)
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #111
+        }
+
+        /* ── PROJECTS GRID ────────────────────── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            padding-bottom: clamp(48px, 6vw, 80px);
+        }
+
+        /* ── PROJECT CARD ─────────────────────── */
+        .proj-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform .34s cubic-bezier(.4, 0, .2, 1),
+                border-color .3s, box-shadow .3s;
+            position: relative;
+        }
+
+        .proj-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            z-index: 2;
+            background: linear-gradient(90deg, transparent, rgba(46, 196, 243, .5), transparent);
+            opacity: 0;
+            transition: opacity .35s;
+        }
+
+        .proj-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(46, 196, 243, .25);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .5), 0 0 32px rgba(46, 196, 243, .07);
+        }
+
+        .proj-card:hover::before {
+            opacity: 1
+        }
+
+        /* thumbnail */
+        .proj-thumb {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proj-thumb-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+            position: relative;
+        }
+
+        .proj-card:hover .proj-thumb-inner {
+            transform: scale(1.06)
+        }
+
+        /* gradient backgrounds */
+        .bg-1 {
+            background: linear-gradient(145deg, #f5c842, #a8d55a)
+        }
+
+        .bg-2 {
+            background: linear-gradient(145deg, #3b5bdb, #1098ad)
+        }
+
+        .bg-3 {
+            background: linear-gradient(145deg, #e03131, #f76707)
+        }
+
+        .bg-4 {
+            background: linear-gradient(145deg, #1864ab, #339af0)
+        }
+
+        .bg-5 {
+            background: linear-gradient(145deg, #c2255c, #e599f7)
+        }
+
+        .bg-6 {
+            background: linear-gradient(145deg, #2b2b3b, #495057)
+        }
+
+        /* noise over thumb */
+        .proj-thumb-inner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            opacity: .06;
+            pointer-events: none;
+        }
+
+        /* hover overlay */
+        .proj-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, .55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .proj-card:hover .proj-overlay {
+            opacity: 1
+        }
+
+        .proj-overlay-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            background: var(--accent);
+            color: #111;
+            font-size: .82rem;
+            font-weight: 700;
+            transform: translateY(8px);
+            transition: transform .3s;
+        }
+
+        .proj-card:hover .proj-overlay-btn {
+            transform: translateY(0)
+        }
+
+        /* card body */
+        .proj-body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1
+        }
+
+        .proj-cats {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 10px
+        }
+
+        .proj-cat {
+            font-size: .63rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 50px;
+            border: 1px solid rgba(46, 196, 243, .2);
+            background: rgba(46, 196, 243, .06);
+        }
+
+        .proj-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 7px;
+            line-height: 1.35
+        }
+
+        .proj-desc {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 16px
+        }
+
+        /* tech stack pills */
+        .proj-stack {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        .tech-pill {
+            font-size: .68rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .1);
+            color: var(--muted);
+        }
+
+        /* view details button */
+        .proj-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 0;
+            border-radius: 8px;
+            background: rgba(46, 196, 243, .08);
+            border: 1px solid rgba(46, 196, 243, .2);
+            color: var(--accent);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .3px;
+            transition: all .22s;
+        }
+
+        .proj-cta:hover {
+            background: rgba(46, 196, 243, .15);
+            border-color: rgba(46, 196, 243, .4)
+        }
+
+        .proj-cta svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        /* hidden card for filter */
+        .proj-card.hidden {
+            display: none
+        }
+
+        /* ── MODAL OVERLAY ────────────────────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 900;
+            background: rgba(5, 5, 8, .85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s, visibility .3s;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible
+        }
+
+        /* ── MODAL BOX ────────────────────────── */
+        .modal {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 880px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px) scale(.97);
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        .modal::-webkit-scrollbar {
+            width: 3px
+        }
+
+        .modal::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 2px
+        }
+
+        .modal-overlay.open .modal {
+            transform: translateY(0) scale(1)
+        }
+
+        /* close */
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .22s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .25)
+        }
+
+        .modal-close svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round
+        }
+
+        /* modal gallery */
+        .modal-gallery {
+            width: 100%;
+            aspect-ratio: 16/8;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .modal-gallery-main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7rem;
+            transition: opacity .3s;
+        }
+
+        /* gallery dots */
+        .gallery-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+
+        .gdot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .3);
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .gdot.active {
+            background: #fff;
+            width: 18px;
+            border-radius: 3px
+        }
+
+        /* modal content */
+        .modal-content {
+            padding: 28px 32px 32px
+        }
+
+        /* title row */
+        .modal-title-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -.5px;
+            line-height: 1.2
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex-shrink: 0
+        }
+
+        .modal-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 18px;
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 700;
+            transition: all .22s;
+            white-space: nowrap;
+        }
+
+        .modal-link-btn.github {
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .14);
+            color: var(--text);
+        }
+
+        .modal-link-btn.github:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .3)
+        }
+
+        .modal-link-btn.live {
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            color: #111;
+        }
+
+        .modal-link-btn.live:hover {
+            box-shadow: 0 6px 24px rgba(46, 196, 243, .35);
+            transform: translateY(-2px)
+        }
+
+        .modal-link-btn svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        /* tags row */
+        .modal-tags {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-bottom: 20px
+        }
+
+        .modal-tag {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            padding: 4px 11px;
+            border-radius: 50px;
+            border: 1px solid rgba(46, 196, 243, .22);
+            background: rgba(46, 196, 243, .07);
+        }
+
+        /* description */
+        .modal-section-title {
+            font-size: .68rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-desc {
+            font-size: .9rem;
+            color: #c0c0d0;
+            line-height: 1.8;
+            margin-bottom: 24px
+        }
+
+        /* features */
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 10px;
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: rgba(46, 196, 243, .1);
+            border: 1px solid rgba(46, 196, 243, .18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: .82rem;
+            color: var(--muted);
+            line-height: 1.5;
+            padding-top: 2px
+        }
+
+        /* tech stack in modal */
+        .modal-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .modal-tech {
+            font-size: .75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .1);
+            color: var(--text);
+        }
+
+        /* bottom bar divider */
+        .modal-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, .07);
+            margin: 20px 0
+        }
+
+        /* ── MOBILE BOTTOM NAV ─────────────────── */
+        .bottom-nav {
+            display: none
+        }
+
+        @media(max-width:768px) {
+            body {
+                padding-bottom: 70px
+            }
+
+            .bottom-nav {
+                display: block;
+                position: fixed;
+                bottom: 0 !important;
+                top: auto !important;
+                left: 0;
+                right: 0;
+                z-index: 9999;
+                background: rgba(14, 14, 18, .96);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                border-top: 1px solid rgba(255, 255, 255, .1);
+                border-bottom: none;
+                padding-bottom: env(safe-area-inset-bottom, 8px);
+                box-shadow: 0 -8px 32px rgba(0, 0, 0, .4);
+            }
+        }
+
+        .bottom-nav-inner {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-around;
+            height: 62px
+        }
+
+        .bn-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            font-family: 'Inter', sans-serif;
+            font-size: .6rem;
+            font-weight: 600;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0 4px;
+            position: relative;
+            transition: color .2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .bn-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 0 0 3px 3px;
+            transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .bn-item.active::after {
+            transform: translateX(-50%) scaleX(1)
+        }
+
+        .bn-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke .2s
+        }
+
+        .bn-item.active {
+            color: var(--accent)
+        }
+
+        .bn-item.active svg {
+            stroke: var(--accent)
+        }
+
+        /* ── RESPONSIVE ─────────────────────── */
+        @media(max-width:960px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:580px) {
+            .projects-grid {
+                grid-template-columns: 1fr
+            }
+
+            .modal-features {
+                grid-template-columns: 1fr
+            }
+
+            .modal-content {
+                padding: 20px 20px 24px
+            }
+
+            .modal-title {
+                font-size: 1.3rem
+            }
+        }
+
+        /* reveal — start invisible, animate in */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .d1 {
+            transition-delay: .07s
+        }
+
+        .d2 {
+            transition-delay: .14s
+        }
+
+        .d3 {
+            transition-delay: .21s
+        }
+
+        .d4 {
+            transition-delay: .28s
+        }
+
+        .d5 {
+            transition-delay: .35s
+        }
+
+        .d6 {
+            transition-delay: .42s
+        }
+
+        /* page-header & filters are always visible — no reveal needed */
+        .page-header,
+        .filters {
+            opacity: 1 !important;
+            transform: none !important
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <img src="assets//img/logo.png" alt="">
+                Ibrahim Abdullah
+            </div>
+            <a href="index.html" class="nav-back">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 12H5M12 5l-7 7 7 7" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div class="wrap">
+            <div class="page-header-tag">Portfolio</div>
+            <h1>All <span>Projects</span></h1>
+            <p>A collection of work across web development, design, and full-stack applications.</p>
+        </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="wrap">
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web App</button>
+            <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+            <button class="filter-btn" data-filter="design">Web Design</button>
+            <button class="filter-btn" data-filter="api">API</button>
+        </div>
+    </div>
+
+    <!-- PROJECTS GRID -->
+    <div class="wrap">
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Cards injected by JS -->
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalBox">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="modal-gallery">
+                <div class="modal-gallery-main" id="modalGallery"></div>
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-title-row">
+                    <div class="modal-title" id="modalTitle"></div>
+                    <div class="modal-links" id="modalLinks"></div>
+                </div>
+                <div class="modal-tags" id="modalTags"></div>
+
+                <div class="modal-section-title">About the Project</div>
+                <div class="modal-desc" id="modalDesc"></div>
+
+                <div class="modal-section-title">Key Features</div>
+                <div class="modal-features" id="modalFeatures"></div>
+
+                <div class="modal-divider"></div>
+                <div class="modal-section-title">Tech Stack</div>
+                <div class="modal-stack" id="modalStack"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-inner">
+            <a href="index.html#home" class="bn-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 12L12 3l9 9" />
+                    <path d="M9 21V12h6v9" />
+                </svg>
+                <span>Home</span>
+            </a>
+            <a href="index.html#about" class="bn-item">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+                <span>About</span>
+            </a>
+            <a href="projects.html" class="bn-item active">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="8" height="8" rx="1" />
+                    <rect x="13" y="3" width="8" height="8" rx="1" />
+                    <rect x="3" y="13" width="8" height="8" rx="1" />
+                    <rect x="13" y="13" width="8" height="8" rx="1" />
+                </svg>
+                <span>Projects</span>
+            </a>
+            <a href="index.html#contact" class="bn-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                </svg>
+                <span>Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        /* ══ PROJECT DATA ══════════════════════════════════════════ */
+        var projects = [
+            {
+                id: 10,
+                name: 'Fawah Website',
+                desc: 'A WordPress website for Fawah, featuring a customized theme and dynamic content management.',
+                longDesc: 'A fully functional WordPress website built for Fawah. It features a responsive design, easy content management, and is customized to meet the brand\'s specific requirements.',
+                img: 'assets/img/project/all/fw.jpg',
+                emoji: '🌺', bg: 'bg-5',
+                cats: ['web', 'design'],
+                catLabels: ['Web Design', 'WordPress'],
+                stack: ['WordPress', 'PHP', 'CSS3', 'HTML5'],
+                features: [
+                    { icon: '📝', text: 'Dynamic content management' },
+                    { icon: '📱', text: 'Responsive and mobile-friendly' },
+                    { icon: '🎨', text: 'Customized WordPress theme' },
+                    { icon: '⚡', text: 'Optimized for performance' },
+                ],
+                github: '#',
+                live: 'https://fawah.unaux.com/',
+                gallery: ['🌺', '✨', '💻'],
+            },
+            {
+                id: 1,
+                name: 'Bonyan Real Estate',
+                desc: 'A modern real estate website with property listings, search filters, and contact forms. Clean, professional design built for a real estate brand.',
+                longDesc: 'A fully responsive real estate website built with pure HTML, CSS, and JavaScript. Features a professional property showcase with filtering by type and location, an interactive hero section, smooth animations, and a lead capture contact form. Designed to convert visitors into clients.',
+                img: 'assets/img/project/all/1.png',
+                emoji: '🏠', bg: 'bg-4',
+                cats: ['web', 'design'],
+                catLabels: ['Web Design', 'Development'],
+                stack: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'CSS Animations'],
+                features: [
+                    { icon: '🏠', text: 'Property listings with detailed cards' },
+                    { icon: '🔍', text: 'Filter by property type & location' },
+                    { icon: '📱', text: 'Fully responsive mobile-first design' },
+                    { icon: '✨', text: 'Smooth scroll animations' },
+                    { icon: '📞', text: 'Lead capture contact form' },
+                    { icon: '🎨', text: 'Professional real estate branding' },
+                ],
+                github: 'https://github.com/ibraheamit/frontend-engineer',
+                live: 'https://ibraheamit.github.io/frontend-engineer/projects/bonyan-real-estate-main/',
+                gallery: ['🏠', '🏢', '🏡'],
+            },
+            {
+                id: 2,
+                name: 'Rasia Marble Website',
+                desc: 'An elegant product showcase website for a marble & stone company, featuring a gallery, product catalog, and company branding.',
+                longDesc: 'A premium business website for a marble and stone company. Showcases their product range through a beautiful gallery layout, includes a company story section, services overview, and a contact page. Designed to reflect the luxury and quality of the marble industry.',
+                img: 'assets/img/project/all/2.png',
+                emoji: '🪨', bg: 'bg-6',
+                cats: ['web', 'design'],
+                catLabels: ['Web Design', 'Development'],
+                stack: ['HTML5', 'CSS3', 'JavaScript', 'CSS Grid', 'Flexbox'],
+                features: [
+                    { icon: '🖼️', text: 'Product gallery with lightbox' },
+                    { icon: '🏢', text: 'Company story & values section' },
+                    { icon: '🛠️', text: 'Services overview page' },
+                    { icon: '📱', text: 'Responsive across all devices' },
+                    { icon: '🎨', text: 'Luxury marble brand aesthetic' },
+                    { icon: '📧', text: 'Contact & inquiry form' },
+                ],
+                github: 'https://github.com/ibraheamit/frontend-engineer',
+                live: 'https://ibraheamit.github.io/frontend-engineer/projects/Rasia-Marble-Website-main/',
+                gallery: ['🪨', '🏛️', '✨'],
+            },
+            {
+                id: 3,
+                name: 'Tier List App',
+                desc: 'An interactive drag-and-drop tier list maker. Rank anything from games to movies by dragging items into S, A, B, C, D tiers.',
+                longDesc: 'A fun and interactive tier list application built with vanilla JavaScript. Users can create custom tier lists by dragging and dropping items into different rank categories (S through D). Supports adding custom items, resetting the board, and exporting the final tier list.',
+                img: 'assets/img/project/all/3.png',
+                emoji: '🏆', bg: 'bg-1',
+                cats: ['web'],
+                catLabels: ['Web App'],
+                stack: ['JavaScript', 'HTML5', 'CSS3', 'Drag & Drop API'],
+                features: [
+                    { icon: '🖱️', text: 'Smooth drag & drop interface' },
+                    { icon: '🏆', text: 'S / A / B / C / D tier rankings' },
+                    { icon: '➕', text: 'Add custom items to rank' },
+                    { icon: '🔄', text: 'Reset board functionality' },
+                    { icon: '💾', text: 'Save & share your tier list' },
+                    { icon: '📱', text: 'Works on mobile with touch' },
+                ],
+                github: 'https://github.com/ibraheamit/frontend-engineer',
+                live: 'https://ibraheamit.github.io/frontend-engineer/projects/Tier-List/',
+                gallery: ['🏆', '🎮', '⭐'],
+            },
+            {
+                id: 4,
+                name: 'eCommerce App',
+                desc: 'A complete online shopping application with product catalog, shopping cart, filters, and a smooth checkout experience.',
+                longDesc: 'A fully functional eCommerce web application featuring a product catalog with category filtering, a dynamic shopping cart with quantity controls, product search, and a streamlined checkout flow. Built with a focus on user experience and performance.',
+                img: 'assets/img/project/all/4.png',
+                emoji: '🛍️', bg: 'bg-5',
+                cats: ['ecommerce', 'web'],
+                catLabels: ['eCommerce', 'Web App'],
+                stack: ['JavaScript', 'HTML5', 'CSS3', 'LocalStorage', 'JSON'],
+                features: [
+                    { icon: '🛒', text: 'Dynamic shopping cart with totals' },
+                    { icon: '🔍', text: 'Product search & category filter' },
+                    { icon: '❤️', text: 'Wishlist / favourites' },
+                    { icon: '📦', text: 'Product detail pages' },
+                    { icon: '💰', text: 'Price sorting & filtering' },
+                    { icon: '📱', text: 'Mobile-friendly responsive layout' },
+                ],
+                github: 'https://github.com/ibraheamit/ecommerce-app',
+                live: 'https://ibraheamit.github.io/ecommerce-app/',
+                gallery: ['🛍️', '🛒', '💳'],
+            },
+            {
+                id: 5,
+                name: 'Recipe Sharing App',
+                desc: 'A community-driven recipe platform where users can discover, search, and share their favourite recipes with step-by-step instructions.',
+                longDesc: 'A recipe sharing web application that allows users to browse a collection of recipes, search by ingredient or cuisine, and view detailed step-by-step cooking instructions. Features a clean card-based UI with category filtering and a responsive design.',
+                img: 'assets/img/project/all/5.png',
+                emoji: '🍳', bg: 'bg-3',
+                cats: ['web', 'api'],
+                catLabels: ['Web App', 'API'],
+                stack: ['JavaScript', 'HTML5', 'CSS3', 'REST API', 'Fetch API'],
+                features: [
+                    { icon: '🔍', text: 'Search by ingredient or cuisine' },
+                    { icon: '📋', text: 'Step-by-step cooking instructions' },
+                    { icon: '🏷️', text: 'Category & difficulty filters' },
+                    { icon: '⏱️', text: 'Cook time & serving info' },
+                    { icon: '❤️', text: 'Save favourite recipes' },
+                    { icon: '📱', text: 'Responsive card-based layout' },
+                ],
+                github: 'https://github.com/ibraheamit/recipe-sharing-app',
+                live: 'https://ibraheamit.github.io/recipe-sharing-app/',
+                gallery: ['🍳', '🥘', '🍜'],
+            },
+            {
+                id: 6,
+                name: 'Arabic Books App',
+                desc: 'An Arabic-language book discovery app for browsing, searching, and exploring a curated collection of Arabic books and authors.',
+                longDesc: 'A bilingual web application designed for Arabic book lovers. Browse and search a curated collection of Arabic literature, view book details, author biographies, and reading recommendations. Supports right-to-left (RTL) layout with full Arabic language support.',
+                img: 'assets/img/project/all/6.png',
+                emoji: '📚', bg: 'bg-2',
+                cats: ['web'],
+                catLabels: ['Web App'],
+                stack: ['JavaScript', 'HTML5', 'CSS3', 'RTL Support', 'JSON'],
+                features: [
+                    { icon: '📚', text: 'Curated Arabic book collection' },
+                    { icon: '🔍', text: 'Search by title or author' },
+                    { icon: '✍️', text: 'Author biography pages' },
+                    { icon: '🌐', text: 'Full RTL Arabic language support' },
+                    { icon: '⭐', text: 'Book ratings & reviews' },
+                    { icon: '📱', text: 'Responsive RTL-friendly design' },
+                ],
+                github: 'https://github.com/ibraheamit/arabic-books-app',
+                live: 'https://ibraheamit.github.io/arabic-books-app/',
+                gallery: ['📚', '📖', '✍️'],
+            },
+            {
+                id: 7,
+                name: 'WinWheel PHP Project',
+                desc: 'A PHP-powered prize wheel web application. Spin to win — a fun, interactive wheel with configurable prizes and backend logic.',
+                longDesc: 'A server-side prize wheel application built with PHP. Features a visually appealing spinning wheel with configurable prize segments, winner tracking stored in a database, and an admin panel to manage prizes. Great for giveaways and promotional events.',
+                img: 'assets/img/project/all/7.png',
+                emoji: '🎡', bg: 'bg-1',
+                cats: ['web'],
+                catLabels: ['Web App', 'Backend'],
+                stack: ['PHP', 'MySQL', 'JavaScript', 'HTML5', 'CSS3', 'Canvas API'],
+                features: [
+                    { icon: '🎡', text: 'Interactive spinning wheel animation' },
+                    { icon: '🏆', text: 'Configurable prize segments' },
+                    { icon: '💾', text: 'MySQL winner tracking database' },
+                    { icon: '⚙️', text: 'Admin panel for prize management' },
+                    { icon: '🎉', text: 'Win celebration animations' },
+                    { icon: '📊', text: 'Winner history & statistics' },
+                ],
+                github: 'https://github.com/ibraheamit/WinWheel-PHP-Project',
+                live: 'https://github.com/ibraheamit/WinWheel-PHP-Project',
+                gallery: ['🎡', '🏆', '🎉'],
+            },
+            {
+                id: 8,
+                name: 'Frontend Projects Roadmap',
+                desc: 'A structured collection of frontend development projects following the roadmap.sh curriculum — from beginner to advanced.',
+                longDesc: 'A comprehensive repository documenting frontend development projects built while following the roadmap.sh learning path. Each project is tagged by difficulty and skill, covering HTML/CSS fundamentals, JavaScript, responsive design, APIs, and modern frameworks.',
+                img: 'assets/img/project/all/8.png',
+                emoji: '🗺️', bg: 'bg-2',
+                cats: ['web'],
+                catLabels: ['Learning', 'Frontend'],
+                stack: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Git'],
+                features: [
+                    { icon: '🗺️', text: 'Structured roadmap.sh curriculum' },
+                    { icon: '📈', text: 'Beginner to advanced progression' },
+                    { icon: '✅', text: 'Project completion tracking' },
+                    { icon: '📚', text: 'Code documented with comments' },
+                    { icon: '🔗', text: 'Live demos for each project' },
+                    { icon: '📁', text: 'Clean organized repo structure' },
+                ],
+                github: 'https://github.com/ibraheamit/frontend-projects-roadmap.sh',
+                live: 'https://github.com/ibraheamit/frontend-projects-roadmap.sh',
+                gallery: ['🗺️', '📚', '💻'],
+            },
+            {
+                id: 9,
+                name: 'DEPI R1 Frontend Tasks',
+                desc: 'A collection of frontend tasks and assignments completed during Round 1 of the Digital Egypt Pioneers (DEPI) program.',
+                longDesc: 'A repository containing all frontend development tasks, assignments, and mini-projects completed during the first round of the Digital Egypt Pioneers (DEPI) program. Showcases progression from HTML/CSS basics to interactive JavaScript applications, covering real-world scenarios and best practices.',
+                img: 'assets/img/project/all/9.png',
+                emoji: '🎓', bg: 'bg-4',
+                cats: ['web', 'design'],
+                catLabels: ['Education', 'Frontend'],
+                stack: ['HTML5', 'CSS3', 'JavaScript', 'DEPI Program', 'Git'],
+                features: [
+                    { icon: '🎓', text: 'DEPI program official tasks' },
+                    { icon: '📝', text: 'HTML & CSS fundamentals projects' },
+                    { icon: '⚡', text: 'JavaScript interactive exercises' },
+                    { icon: '📱', text: 'Responsive design challenges' },
+                    { icon: '🔧', text: 'Real-world frontend scenarios' },
+                    { icon: '📂', text: 'Well-organized task structure' },
+                ],
+                github: 'https://github.com/ibraheamit/depi-r1-frontend-tasks',
+                live: 'https://github.com/ibraheamit/depi-r1-frontend-tasks',
+                gallery: ['🎓', '📝', '💡'],
+            },
+        ];
+
+        /* ══ RENDER GRID ══════════════════════════════════════════ */
+        function renderGrid(filter) {
+            var grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+            var list = filter === 'all'
+                ? projects
+                : projects.filter(function (p) { return p.cats.indexOf(filter) !== -1; });
+
+            list.forEach(function (p, i) {
+                var card = document.createElement('div');
+                card.className = 'proj-card reveal d' + (i % 6);
+                card.dataset.id = p.id;
+                card.innerHTML =
+                    '<div class="proj-thumb">' +
+                    '<div class="proj-thumb-inner ' + p.bg + '">' + (p.img ? '<img src="' + p.img + '" style="width: 100%; height: 100%; object-fit: cover;" alt="">' : p.emoji) + '</div>' +
+                    '<div class="proj-overlay">' +
+                    '<div class="proj-overlay-btn">View Details' +
+                    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="proj-body">' +
+                    '<div class="proj-cats">' +
+                    p.catLabels.map(function (c) { return '<span class="proj-cat">' + c + '</span>'; }).join('') +
+                    '</div>' +
+                    '<div class="proj-name">' + p.name + '</div>' +
+                    '<div class="proj-desc">' + p.desc + '</div>' +
+                    '<div class="proj-stack">' +
+                    p.stack.slice(0, 4).map(function (t) { return '<span class="tech-pill">' + t + '</span>'; }).join('') +
+                    '</div>' +
+                    '<button class="proj-cta" data-id="' + p.id + '">' +
+                    'View Details' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+                    '</button>' +
+                    '</div>';
+                grid.appendChild(card);
+            });
+
+            /* re-observe reveals */
+            observeReveals();
+        }
+
+        /* ══ FILTER ═══════════════════════════════════════════════ */
+        document.querySelectorAll('.filter-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                renderGrid(btn.dataset.filter);
+            });
+        });
+
+        /* ══ MODAL ════════════════════════════════════════════════ */
+        var overlay = document.getElementById('modalOverlay');
+        var modalBox = document.getElementById('modalBox');
+        var currentGallery = [];
+        var currentGIdx = 0;
+
+        function openModal(id) {
+            var p = projects.find(function (x) { return x.id === id; });
+            if (!p) return;
+
+            /* gallery */
+            currentGallery = p.img ? [p.img] : (p.gallery && p.gallery.length > 0 ? [p.gallery[0]] : []);
+            currentGIdx = 0;
+            setGallery(0);
+
+            /* title */
+            document.getElementById('modalTitle').textContent = p.name;
+
+            /* links */
+            var isGithubOnly = p.live === p.github;
+            document.getElementById('modalLinks').innerHTML =
+                '<a href="' + p.github + '" target="_blank" rel="noopener" class="modal-link-btn github">' +
+                '<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>' +
+                'GitHub' +
+                '</a>' +
+                (!isGithubOnly ?
+                    '<a href="' + p.live + '" target="_blank" rel="noopener" class="modal-link-btn live">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="13" height="13" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
+                    'Live Demo' +
+                    '</a>' : '');
+
+            /* tags */
+            document.getElementById('modalTags').innerHTML =
+                p.catLabels.map(function (c) { return '<span class="modal-tag">' + c + '</span>'; }).join('');
+
+            /* desc */
+            document.getElementById('modalDesc').textContent = p.longDesc;
+
+            /* features */
+            document.getElementById('modalFeatures').innerHTML =
+                p.features.map(function (f) {
+                    return '<div class="feature-item">' +
+                        '<div class="feature-icon">' + f.icon + '</div>' +
+                        '<div class="feature-text">' + f.text + '</div>' +
+                        '</div>';
+                }).join('');
+
+            /* stack */
+            document.getElementById('modalStack').innerHTML =
+                p.stack.map(function (t) { return '<span class="modal-tech">' + t + '</span>'; }).join('');
+
+            /* open */
+            overlay.classList.add('open');
+            modalBox.scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setGallery(idx) {
+            var g = document.getElementById('modalGallery');
+            var dots = document.getElementById('galleryDots');
+            var bg = projects[0].bg; /* default; overridden below */
+
+            /* find project by current open */
+            var id = parseInt(modalBox.dataset.currentId || 1);
+            var p = projects.find(function (x) { return x.id === id; });
+            if (p) bg = p.bg;
+
+            currentGIdx = idx;
+            g.className = 'modal-gallery-main ' + (p ? p.bg : 'bg-1');
+
+            var content = currentGallery[idx];
+            if (idx === 0 && p && p.img) {
+                content = p.img;
+            }
+
+            if (content && (content.indexOf('.png') !== -1 || content.indexOf('.jpg') !== -1 || content.indexOf('.jpeg') !== -1 || content.indexOf('.webp') !== -1)) {
+                g.style.fontSize = '';
+                g.innerHTML = '<img src="' + content + '" style="width: 100%; height: 100%; object-fit: cover;">';
+            } else {
+                g.style.fontSize = '8rem';
+                g.textContent = content;
+            }
+
+            /* dots */
+            if (currentGallery.length > 1) {
+                dots.innerHTML = currentGallery.map(function (_, i) {
+                    return '<div class="gdot' + (i === idx ? ' active' : '') + '" data-i="' + i + '"></div>';
+                }).join('');
+                dots.querySelectorAll('.gdot').forEach(function (d) {
+                    d.addEventListener('click', function () { setGallery(+d.dataset.i); });
+                });
+            } else {
+                dots.innerHTML = '';
+            }
+        }
+
+        function closeModal() {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        /* delegation for open */
+        document.getElementById('projectsGrid').addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-id]');
+            if (!btn) return;
+            var id = parseInt(btn.dataset.id);
+            modalBox.dataset.currentId = id;
+            openModal(id);
+        });
+
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+        /* swipe gallery */
+        var touchStartX = 0;
+        modalBox.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; });
+        modalBox.addEventListener('touchend', function (e) {
+            var dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) {
+                var next = currentGIdx + (dx < 0 ? 1 : -1);
+                if (next >= 0 && next < currentGallery.length) setGallery(next);
+            }
+        });
+
+        /* ══ REVEAL ═══════════════════════════════════════════════ */
+        function observeReveals() {
+            /* Force-show everything after 500ms as a guaranteed fallback */
+            setTimeout(function () {
+                document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+            }, 500);
+
+            if ('IntersectionObserver' in window) {
+                var obs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('in');
+                            obs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+                document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+            }
+        }
+
+        /* ══ INIT ═════════════════════════════════════════════════ */
+        renderGrid('all');
+    </script>
+</body>
+
+</html>
