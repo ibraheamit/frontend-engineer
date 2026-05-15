@@ -9,7 +9,7 @@
 | **موقع راسية للرخام**              | <img src="./Rasia-Marble-Website-main/preview.jpg" width="100" alt="Rasia Logo"> | [Source Code](./Rasia-Marble-Website-main) | [Live Demo](https://ibraheamit.github.io/frontend-engineer/projects/Rasia-Marble-Website-main/) |
 | **منصة بنيان العقارية**            | <img src="./bonyan-real-estate-main/preview.jpg" width="100" alt="Bunyan Logo">  | [Source Code](./bonyan-real-estate-main)   | [Live Demo](https://ibraheamit.github.io/frontend-engineer/projects/bonyan-real-estate-main/)   |
 | **منشئ قوائم التصنيف (Tier List)** | <img src="./Tier-List/preview.png" width="100" alt="Tier List Preview">          | [Source Code](./Tier-List)                 | [Live Demo](https://ibraheamit.github.io/frontend-engineer/projects/Tier-List/)                 |
-| **موقع شخصي**              | <img src="./portfolio/preview.png" width="100" alt="Portfolio Website Preview"> | [Source Code](./portfolio) | [Live Demo](https://ibraheamit.github.io/frontend-engineer/projects/portfolio/) |
+| **موقع شخصي**              | <img src="./Portfolio/preview.png" width="100" alt="Portfolio Website Preview"> | [Source Code](./Portfolio) | [Live Demo](https://ibraheamit.github.io/frontend-engineer/projects/Portfolio/) |
 
 ## 🛠️ التقنيات المستخدمة
 

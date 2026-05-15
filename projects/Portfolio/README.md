@@ -3,7 +3,7 @@
 Welcome to the repository of my personal portfolio website! This project showcases my skills, projects, certifications, and coding activities as a Frontend Developer / Software Engineer.
 
 ## 🚀 Live Demo
-[View Live Portfolio](https://ibraheamit.github.io/frontend-engineer)
+[View Live Portfolio](https://ibraheamit.github.io/frontend-engineer/projects/Portfolio/)
 
 ## ✨ Features
 - **Modern UI/UX**: Dark theme with beautiful CSS gradients, glassmorphism, and smooth scroll animations.
@@ -36,7 +36,7 @@ Welcome to the repository of my personal portfolio website! This project showcas
    ```
 2. Navigate to the project directory:
    ```bash
-   cd frontend-engineer
+   cd frontend-engineer/projects/Portfolio
    ```
 3. Open `index.html` in your favorite web browser. Since it's built with Vanilla HTML/CSS/JS, no build steps are required!
    *(Optional: You can use an extension like VS Code Live Server for auto-reloading during development).*
